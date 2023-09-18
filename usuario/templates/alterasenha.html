@@ -1,0 +1,18 @@
+
+<div class="row">
+  <div class="col-md-4 mx-auto">
+      <h1><small class="text-muted">Alterar Senha</small></h1>
+      <h3>Usuario : {{ request.user|upper }} </h3>
+<hr>
+<form action="" method = "POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+
+  <button type="submit" class="btn btn-primary">Alterar</button><br>
+
+</form>
+  </div>
+</div>
+
+
+{% endblock %}
