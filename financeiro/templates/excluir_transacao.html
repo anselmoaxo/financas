@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+
+ 
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <h2><small class="text-dark" "text-center"></small>Exclusão Transação</h2>
+        <hr>
+ <form action="" method="POST">
+      <p class="text-white">
+        Deseja excluir esse Transação: <strong class="text-dark" "text-center"> 
+            Você deseja Excluir a Transação do ("{{ object }}")</strong> ?
+      </p>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-success ">SIM</button>
+        </div>
+        <div class="col-6">
+          <a href="{% url 'financeiro:lista_transacao' %}" class="btn btn-danger" title="Voltar">NÃO</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

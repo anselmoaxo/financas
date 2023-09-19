@@ -13,4 +13,9 @@ urlpatterns = [
         views.UpdateTransacao.as_view(),
         name="update_transacao",
     ),
+    path(
+        "excluir_transacao/<int:pk>/",
+        views.DeleteTransacao.as_view(),
+        name="excluir_transacao",
+    ),
 ]
