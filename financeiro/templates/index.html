@@ -7,38 +7,29 @@
  {% endblock  %} 
  
  {% block content  %}
- 
- <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+ <header class="bg-primary text-white text-center py-3">
+  <h1>Gerenciamento de Finanças Pessoais</h1>
+</header>
 
-   
-    
-  
- {% endblock  %}
+<div class="container mt-5">
+  <section>
+      <h2>Orçamento Mensal</h2>
+      <p>Aqui você pode acompanhar seu orçamento mensal e controlar suas despesas e receitas.</p>
+  </section>
+
+  <section>
+      <h2>Economia e Investimentos</h2>
+      <p>Saiba como fazer investimentos inteligentes e economizar dinheiro para o futuro.</p>
+  </section>
+
+  <section>
+      <h2>Redução de Dívidas</h2>
+      <p>Dicas para reduzir suas dívidas e melhorar sua saúde financeira.</p>
+  </section>
+
+  <section>
+      <h2>Poupança e Planejamento</h2>
+      <p>Aprenda a criar um plano de poupança e definir metas financeiras.</p>
+  </section>
+</div>
+{% endblock  %}
