@@ -1,6 +1,27 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView
+from .models import Transaction, Category
+from django.urls import reverse_lazy
 
 
 class Homepage(TemplateView):
     template_name = "index.html"
+
+
+class CadastroTransacao(CreateView):
+    template_name = "cadastro.html"
+    model = Transaction
+    fields = "__all__"
+    success_url = reverse_lazy("financeiro:lista_transacao")
+
+
+class ListaTransacao(ListView):
+    model = Transaction
+    template_name = "lista_transacao.html"
+
+
+class UpdateTransacao(UpdateView):
+    template_name = "cadastro.html"
+    model = Transaction
+    fields = "__all__"
+    success_url = reverse_lazy("financeiro:lista_transacao")

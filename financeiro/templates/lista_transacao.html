@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+
+ 
+ {% block content  %}
+ <div class="row">
+    <div class="col-md-10 mx-auto">
+        <h2><small class="text-dark" "text-center"></small>Transações</h2>
+        <hr>
+        <table class='table table-success table-striped'>
+            <thead>
+              <tr>
+                <th scope="col">Descrição</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Data</th>
+                <th scope="col">Tipo Transação</th>
+                <th scope="col">Opções</th>
+              </tr>
+            </thead>
+            
+    <tbody>
+        {% for transacao in object_list %}
+              <tr>
+                <td>{{ transacao.description }}</td>
+                <td>{{ transacao.category }}</td>
+                <td>{{ transacao.amount }}</td>
+                <td>{{ transacao.transaction_date }}</td>
+                <td>{{ update_transacao.transaction_type}}</td>
+                <td><div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Opções
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url "financeiro:update_transacao" transacao.pk %}">Editar</a></li>
+                      <li><a class="dropdown-item" href="#">Excluir</a></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+        {% empty%}
+            <tr>
+                <td colspan=" 5">Nenhum campo registrado</td>
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table>
+    </div>
+</div>
+
+  {% endblock  %} 

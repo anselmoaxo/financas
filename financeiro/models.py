@@ -15,8 +15,8 @@ class Category(models.Model):
 
 class Transaction(models.Model):
     TRANSACTION_TYPES = [
-        ("expense", "Despesa"),
-        ("income", "Receita"),
+        ("Despesas", "Despesa"),
+        ("Receita", "Receita"),
     ]
 
     description = models.CharField(max_length=255)

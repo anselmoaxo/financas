@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+
+ 
+ {% block content  %}
+ <div class="row">
+    <div class="col-md-8 mx-auto">
+        <h2><small class="text-dark" "text-center"></small>Cadastro Despesas e ou Receitas</h2>
+        <hr>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-primary">Salvar</button><br>
+        </form>
+    </div>
+   
+    
+</div>
+
+  {% endblock  %} 
