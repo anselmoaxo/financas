@@ -38,3 +38,8 @@ class DeleteTransacao(LoginRequiredMixin, DeleteView):
     template_name = "excluir_transacao.html"
     model = Transaction
     success_url = reverse_lazy("financeiro:lista_transacao")
+
+
+class ListaDashboard(LoginRequiredMixin, ListView):
+    model = Transaction
+    template_name = "dashboard.html"

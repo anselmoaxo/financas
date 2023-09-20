@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    <h1 class="text-center">DASHBOARD</h1>
+    <hr>
+    <div class="col-md-10 mx-auto">
+        <h2 class="text-center">Transações Receitas</h2>
+
+        <table class='table table-success table-striped'>
+            <thead>
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Tipo Transação</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transacao in object_list %}
+                {% if transacao.transaction_type == 'Receita' %}
+                <tr>
+                    <td>{{ transacao.description }}</td>
+                    <td>{{ transacao.category }}</td>
+                    <td>{{ transacao.amount }}</td>
+                    <td>{{ transacao.transaction_date }}</td>
+                    <td>{{ transacao.transaction_type }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Opções
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url "financeiro:update_transacao" transacao.pk %}">Editar</a></li>
+                            <li><a class="dropdown-item" href="{% url "financeiro:excluir_transacao" transacao.pk %}">Excluir</a></li>
+                          </ul><!-- Add your buttons or actions here for Receitas -->
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <h2 class="text-center">Transações Despesas</h2>
+
+        <table class='table table-danger table-striped'>
+            <thead>
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Tipo Transação</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transacao in object_list %}
+                {% if transacao.transaction_type == 'Despesas' %}
+                <tr>
+                    <td>{{ transacao.description }}</td>
+                    <td>{{ transacao.category }}</td>
+                    <td>{{ transacao.amount }}</td>
+                    <td>{{ transacao.transaction_date }}</td>
+                    <td>{{ transacao.transaction_type }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Opções
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url "financeiro:update_transacao" transacao.pk %}">Editar</a></li>
+                            <li><a class="dropdown-item" href="{% url "financeiro:excluir_transacao" transacao.pk %}">Excluir</a></li>
+                          </ul> <!-- Add your buttons or actions here for Despesas -->
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

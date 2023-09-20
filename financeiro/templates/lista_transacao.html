@@ -7,6 +7,10 @@
     <div class="col-md-10 mx-auto">
         <h2><small class="text-dark" "text-center"></small>Transações</h2>
         <hr>
+        <h3><small class="text-dark" "text-center"></small>Search </h3>
+        <input class="form-control" type="text" value="Pesquisar Transação..." aria-label="readonly input example" readonly>
+        <hr>
+        <a href="{% url "financeiro:cadastro" %}"class="btn btn-outline-primary">Adicionar Transação</a>
         <table class='table table-success table-striped'>
             <thead>
               <tr>
@@ -26,9 +30,9 @@
                 <td>{{ transacao.category }}</td>
                 <td>{{ transacao.amount }}</td>
                 <td>{{ transacao.transaction_date }}</td>
-                <td>{{ update_transacao.transaction_type}}</td>
+                <td>{{ transacao.transaction_type}}</td>
                 <td><div class="btn-group" role="group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                       Opções
                     </button>
                     <ul class="dropdown-menu">

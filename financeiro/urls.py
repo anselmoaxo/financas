@@ -18,4 +18,5 @@ urlpatterns = [
         views.DeleteTransacao.as_view(),
         name="excluir_transacao",
     ),
+    path("dashboard", views.ListaDashboard.as_view(), name="dashboard"),
 ]
