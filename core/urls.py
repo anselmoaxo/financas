@@ -7,6 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("financeiro.urls", namespace="financeiro")),
+    path("", include("usuario.urls", namespace="usuario")),
 ]
 
 
