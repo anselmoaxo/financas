@@ -3,12 +3,33 @@
 
 {% block content %}
 <div class="row">
+    <div class="col-md-10 mx-auto">
+        <div class="table-responsive">
     <h1 class="text-center">DASHBOARD</h1>
     <hr>
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            {{ soma_despesas}}
+          </div>
+          <div class="col">
+            {{ soma_receita }}
+
+          </div>
+          <div class="col">
+            {{ saldo }}
+
+          </div>
+        </div>
+      </div>
+
+   
     <div class="col-md-10 mx-auto">
+        <div class="table-responsive">
+
         <h2 class="text-center">Transações Receitas</h2>
 
-        <table class='table table-success table-striped'>
+        <table class='table table-sm table-success table-striped table-bordered table-condensed table-hover'>
             <thead>
                 <tr>
                     <th scope="col">Descrição</th>
@@ -43,14 +64,16 @@
             </tbody>
         </table>
     </div>
+    </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-md-10 mx-auto">
+        <div class="table-responsive">
         <h2 class="text-center">Transações Despesas</h2>
-
-        <table class='table table-danger table-striped'>
-            <thead>
+        
+        <table class='table table-sm table-danger table-striped table-bordered table-condensed table-hover'>
+            <thead >
                 <tr>
                     <th scope="col">Descrição</th>
                     <th scope="col">Categoria</th>
@@ -83,6 +106,7 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
     </div>
 </div>
 {% endblock %}
