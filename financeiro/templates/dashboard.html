@@ -7,23 +7,40 @@
         <div class="table-responsive">
     <h1 class="text-center">DASHBOARD</h1>
     <hr>
-    <div class="container">
-        <div class="row">
-          <div class="col">
-            {{ soma_despesas}}
-          </div>
-          <div class="col">
-            {{ soma_receita }}
-
-          </div>
-          <div class="col">
-            {{ saldo }}
-
+    <div class="container mt-1 d-flex justify-content-center align-items-center">
+        <div class="d-md-inline-block mx-3 col-3">
+          <div class="toast show text-dark bg-warning border-0">
+            <div class="toast-header">
+              <strong class="me-auto">Total Receita </strong>
+            </div>
+            <div class="toast-body">
+              <h4>R${{ soma_receita}}</h4>
+            </div>
           </div>
         </div>
-      </div>
-
-   
+         
+        <div class="d-md-inline-block mx-3 col-3">
+          <div class="toast show text-dark bg-primary border-0">
+            <div class="toast-header">
+              <strong class="me-auto">Total Despesas</strong>
+            </div>
+            <div class="toast-body">
+                <h4>R${{ soma_despesas}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="d-md-inline-block mx-3 col-3">
+            <div class="toast show text-dark bg-success border-0">
+              <div class="toast-header">
+                <strong class="me-auto">Saldo</strong>
+              </div>
+              <div class="toast-body">
+                <h4>R${{ saldo }}</h4>
+              </div>
+            </div>
+          </div>  
+    </div>
+   <hr>
     <div class="col-md-10 mx-auto">
         <div class="table-responsive">
 
