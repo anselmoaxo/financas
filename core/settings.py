@@ -135,7 +135,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-LOGIN_REDIRECT_URL = "financeiro:index"
+LOGIN_REDIRECT_URL = "financeiro:dashboard"
 LOGOUT_REDIRECT_URL = "usuario:login"
 LOGIN_URL = "usuario:login"
 

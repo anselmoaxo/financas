@@ -1,31 +1,27 @@
-
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-
 {% block content %}
-
-
-<div class="row">
-  <div class="col-md-8 mx-auto">
-      <h2> <i class="bi bi-bag-fill"></i><small class="border-start-0" "text-dark" "text-center" >AUTENTICAÇÃO USUÁRIO</small></h2>
-      <hr>
+<div class="container d-flex justify-content-center " style="height: 100vh;">
+  <div class="col-md-6">
+    <blockquote class="blockquote">
+      <p class="text-center">Bem Vindo - Sistema de Finanças Pessoais</p>
+    </blockquote><hr>
+    <h2 class="text-center"><i class="bi bi-bag-fill"></i> <small class="border-start-0 text-dark">AUTENTICAÇÃO USUÁRIO</small></h2>
+    <hr>
     <form action="" method="POST">
       {% csrf_token %}
       {{ form|crispy }}
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
         <label class="form-check-label" for="flexCheckChecked">
           Lembra-me
         </label>
       </div>
-      
-     
-      <button type="submit" class="btn btn-primary">Acessar Sistema</button>
-      <a href="{% url "usuario:cadastro_user" %}" class="link-primary">Fazer Cadastro</a>
+      <button type="submit" class="btn btn-primary"><i class="bi bi-floppy2-fill"></i> Acessar Sistema</button>
+      </div>
+      <a href="{% url "usuario:cadastro_user" %}" class="link-primary"><i class="bi bi-plus-square-dotted"></i> Fazer Cadastro</a>
     </form>
   </div>
 </div>
-
-
 {% endblock %}

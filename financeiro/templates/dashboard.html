@@ -5,13 +5,16 @@
 <div class="row">
     <div class="col-md-10 mx-auto">
         <div class="table-responsive">
-    <h1 class="text-center">DASHBOARD</h1>
+          <div class="alert alert-success">Bem Vindo ao seu Dashboard - {{request.user.first_name}}
+            {{request.user.last_name}}
+          </div>
+    <h1 class="text-center">Dashboard Transações Financeiras</h1>
     <hr>
     <div class="container mt-1 d-flex justify-content-center align-items-center">
         <div class="d-md-inline-block mx-3 col-3">
           <div class="toast show text-dark bg-warning border-0">
             <div class="toast-header">
-              <strong class="me-auto">Total Receita </strong>
+              <strong>Total Receita </strong>
             </div>
             <div class="toast-body">
               <h4>R${{ soma_receita}}</h4>
@@ -47,7 +50,7 @@
 
         <h2 class="text-center">Transações Receitas</h2>
 
-        <table class='table table-sm table-success table-striped table-bordered table-condensed table-hover'>
+        <table class='table table-sm table-dark table-striped table-bordered table-condensed table-hover'>
             <thead>
                 <tr>
                     <th scope="col">Descrição</th>
@@ -61,7 +64,8 @@
             <tbody>
                 {% for transacao in object_list %}
                 {% if transacao.transaction_type == 'Receita' %}
-                <tr>
+
+                  <tr class="table-success">
                     <td>{{ transacao.description }}</td>
                     <td>{{ transacao.category }}</td>
                     <td>{{ transacao.amount }}</td>
@@ -90,7 +94,7 @@
         <div class="table-responsive">
         <h2 class="text-center">Transações Despesas</h2>
         
-        <table class='table table-sm table-danger table-striped table-bordered table-condensed table-hover'>
+        <table class='table table-sm table-dark table-striped table-bordered table-condensed table-hover'>
             <thead >
                 <tr>
                     <th scope="col">Descrição</th>
@@ -104,7 +108,7 @@
             <tbody>
                 {% for transacao in object_list %}
                 {% if transacao.transaction_type == 'Despesas' %}
-                <tr>
+                <tr class="table-danger">
                     <td>{{ transacao.description }}</td>
                     <td>{{ transacao.category }}</td>
                     <td>{{ transacao.amount }}</td>
