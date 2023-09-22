@@ -53,6 +53,18 @@ class ListaDashboard(LoginRequiredMixin, ListView):
     template_name = "dashboard.html"
 
 
+def list_despesas(request):
+    lista = Transaction.objects.filter(transaction_type="Despesas")
+    context = {"lista": lista}
+    return render(request, "lista_despesa.html", context)
+
+
+def list_receita(request):
+    lista = Transaction.objects.filter(transaction_type="Receita")
+    context = {"lista": lista}
+    return render(request, "lista_receita.html", context)
+
+
 # Função para criar o gráfico de barras
 def create_bar_chart():
     # Chama a função soma_transacao, que retorna um contexto com informações de despesas e receitas
@@ -67,15 +79,12 @@ def create_bar_chart():
     # Define os rótulos (labels) e os valores para o gráfico
     labels = ["Despesas", "Receita"]
     values = [soma_despesas, soma_receitas]
-
+    destaques = [0.05, 0.05]
     # Cria o gráfico de barras
-    plt.bar(labels, values)
+    plt.pie(values, labels=labels, autopct="%1.f", explode=destaques, shadow=True)
 
     # Adiciona rótulos e título ao gráfico
-    plt.xlabel("Tipos Despesas/Receita")
-    plt.ylabel("Valores")
-    plt.title("Gráfico de Barras Transações")
-
+    plt.title("Percentual Despesas/Receita")
     # Salva o gráfico como um arquivo de imagem PNG
     plt.savefig("static/bar_chart.png")
 

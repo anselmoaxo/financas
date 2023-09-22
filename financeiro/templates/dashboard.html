@@ -40,6 +40,7 @@
             </div>
           </div>  
     </div>
+    
    <hr>
     <div class="col-md-10 mx-auto">
         <div class="table-responsive">
@@ -125,11 +126,27 @@
         </table>
     </div>
     </div>
+
 </div>
 <hr>
-<div id="chart-container" class="rounded float-start">
-    <img src="{% url 'financeiro:chart_image' %}" alt="Gráfico de Barras">
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% url "financeiro:chart_image" %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% url "financeiro:chart_image" %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Grafico de transacao (Despesas/Receita)</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 {% endblock %}

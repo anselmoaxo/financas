@@ -1,0 +1,56 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+
+ 
+ {% block content  %}
+ <div class="row">
+    <div class="col-md-10 mx-auto">
+        <h2><small class="text-dark" "text-center"></small>RECEITA</h2>
+        <hr>
+        <h3><small class="text-dark" "text-center"></small>Search </h3>
+        <input class="form-control" type="text" value="Pesquisar Transação..." aria-label="readonly input example" readonly>
+        <hr>
+        <a href="{% url "financeiro:cadastro" %}"class="btn btn-outline-primary">Adicionar Transação</a>
+        <table class='table table-sm table-danger table-striped table-bordered table-condensed table-hover'>
+          <thead>
+              <tr>
+                <th scope="col">Descrição</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Data</th>
+                <th scope="col">Tipo Transação</th>
+                <th scope="col">Opções</th>
+              </tr>
+            </thead>
+            
+    <tbody>
+        {% for l in lista %}
+              <tr>
+                <td>{{ l.description }}</td>
+                <td>{{ l.category }}</td>
+                <td>{{ l.amount }}</td>
+                <td>{{ l.transaction_date }}</td>
+                <td>{{ l.transaction_type}}</td>
+                <td><div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Opções
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url "financeiro:update_transacao" l.pk %}">Editar</a></li>
+                      <li><a class="dropdown-item" href="{% url "financeiro:excluir_transacao" l.pk %}">Excluir</a></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+        {% empty%}
+            <tr>
+                <td colspan=" 5">Nenhum campo registrado</td>
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table>
+    </div>
+</div>
+
+  {% endblock  %} 
