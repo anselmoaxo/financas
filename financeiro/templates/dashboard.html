@@ -8,48 +8,77 @@
           <div class="alert alert-success">Bem Vindo ao seu Dashboard - {{request.user.first_name}}
             {{request.user.last_name}}
           </div>
-    <h1 class="text-center">Dashboard Transações Financeiras</h1>
-    <hr>
-    <div class="container mt-1 d-flex justify-content-center align-items-center">
-        <div class="d-md-inline-block mx-3 col-3">
-          <div class="toast show text-dark bg-warning border-0">
-            <div class="toast-header">
-              <strong>Total Receita </strong>
-            </div>
-            <div class="toast-body">
-              <h4>R${{ soma_receita}}</h4>
-            </div>
-          </div>
+    <h1 class="text-center bg-light shadow-lg p-2 mb-2">Dashboard Transações Financeiras</h1>
+
+    <style>
+  
+
+
+      .card {
+        transition: transform 0.3s;
+        box-shadow: 0 9px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px; /* Adicione uma margem inferior para espaçamento entre os cartões */
+      }
+  
+      .card:hover {
+        transform: scale(1.05);
+      }
+    </style>
+   
+<div class="container mt-5 ">
+  <div class="flex-container d-flex flex-wrap">
+    
+    <div class="flex-item p-4 flex-xl-fill bd-highlight">
+        
+      <div class="card card border-info card bg-light">
+        <div class="card-body">
+          <h3 class="card-title text-center border-bottom">Total Receita</h3>
+          <p class="card-text"></p>
+          <h4 class="card-title text-center ">R$ {{ soma_receita}}</h4>
+          
         </div>
-         
-        <div class="d-md-inline-block mx-3 col-3">
-          <div class="toast show text-dark bg-primary border-0">
-            <div class="toast-header">
-              <strong class="me-auto">Total Despesas</strong>
-            </div>
-            <div class="toast-body">
-                <h4>R${{ soma_despesas}}</h4>
-            </div>
-          </div>
-        </div>
-        <div class="d-md-inline-block mx-3 col-3">
-            <div class="toast show text-dark bg-success border-0">
-              <div class="toast-header">
-                <strong class="me-auto">Saldo</strong>
-              </div>
-              <div class="toast-body">
-                <h4>R${{ saldo }}</h4>
-              </div>
-            </div>
-          </div>  
+      
+      </div>
+     
     </div>
+    <div class="flex-item p-4 flex-xl-fill bd-highlight">
+        
+      <div class="card card border-info card bg-light">
+        <div class="card-body">
+          <h3 class="card-title text-center border-bottom">Total Despesas</h3>
+          <p class="card-text"></p>
+          <h4 class="card-title text-center ">R$ {{ soma_despesas}}</h4>
+          
+        </div>
+      
+      </div>
+     
+    </div>
+    <div class="flex-item p-4 flex-xl-fill bd-highlight">
+        
+      <div class="card card border-info card bg-light">
+        <div class="card-body">
+          <h3 class="card-title text-center border-bottom">Total Saldo</h3>
+          <p class="card-text"></p>
+          <h4 class="card-title text-center ">R$ {{ saldo }}</h4>
+         
+        </div>
+      
+      </div>
+     
+    </div>
+    
+   
+  </div>
+ 
+</div>
     
    <hr>
     <div class="col-md-10 mx-auto">
         <div class="table-responsive">
 
-        <h2 class="text-center">Transações Receitas</h2>
-
+        <h2 class="text-center">Receitas</h2>
+        <div class="table-responsive shadow-lg p-2 mb-5 ">
         <table class='table table-sm table-dark table-striped table-bordered table-condensed table-hover'>
             <thead>
                 <tr>
@@ -65,7 +94,7 @@
                 {% for transacao in object_list %}
                 {% if transacao.transaction_type == 'Receita' %}
 
-                  <tr class="table-success">
+                  <tr class="table-light">
                     <td>{{ transacao.description }}</td>
                     <td>{{ transacao.category }}</td>
                     <td>{{ transacao.amount }}</td>
@@ -86,14 +115,15 @@
             </tbody>
         </table>
     </div>
+  </div>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-md-10 mx-auto">
         <div class="table-responsive">
-        <h2 class="text-center">Transações Despesas</h2>
-        
+        <h2 class="text-center">Despesas</h2>
+        <div class="table-responsive shadow-lg p-2 mb-5 ">
         <table class='table table-sm table-dark table-striped table-bordered table-condensed table-hover'>
             <thead >
                 <tr>
@@ -130,27 +160,7 @@
         </table>
     </div>
     </div>
+  </div>
+</div>
 
-</div>
-<hr>
-<div class="row">
-  <div class="col-sm-4">
-    <div class="card">
-      <img src="{% url "financeiro:chart_image" %}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-      <img src="{% url "financeiro:chart_image" %}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Grafico de transacao (Despesas/Receita)</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
