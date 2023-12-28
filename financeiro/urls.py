@@ -21,5 +21,5 @@ urlpatterns = [
         name="excluir_transacao",
     ),
     path("dashboard", views.ListaDashboard.as_view(), name="dashboard"),
-    path("chart/", views.chart_image, name="chart_image"),
+  
 ]

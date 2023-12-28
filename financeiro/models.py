@@ -1,8 +1,5 @@
 from django.db import models
-
-from django.db import models
-
-from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -33,3 +30,6 @@ class Transaction(models.Model):
 
     def __str__(self):
         return self.description
+    
+    def get_delete_url(self):
+        return reverse("financeiro:excluir_transacao", kwargs={"pk": self.pk})
