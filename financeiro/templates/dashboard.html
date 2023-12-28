@@ -133,7 +133,8 @@
                     <th scope="col">Valor</th>
                     <th scope="col">Data Pagamento</th>
                     <th scope="col">Tipo Transação</th>
-                    <th scope="col">Opções</th>
+                    <th scope="col"class= 'text-center'>Opções</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -147,12 +148,34 @@
                     <td>{{ transacao.transaction_type }}</td>
                     <td>
                       <a href="{% url "financeiro:update_transacao" transacao.pk %}">
-                     <button type="button" class="btn btn-sm btn-primary">Editar</button></a> </td>
-                     <td>
-                     <form method="post" action="{{ transacao.get_delete_url }}">
-                      {% csrf_token %}
-                      <button type="submit" class="btn btn-danger btn-sm ">Excluir</button>
-                  </form>
+                     <button type="button" class="btn btn-sm btn-primary">Editar</button></a> 
+                  
+                      
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal{{ transacao.pk }}" >Excluir</button> 
+                        <!-- Modal -->
+                            <div class=" shadow-lg p-3 mb-5  rounded modal fade" id="modal{{ transacao.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                              <div class="modal-dialog " role="document">
+                                <div class="modal-content ">
+                                  <div class="modal-header text-center align-items-center p-1 ">
+                                    <h4 class="modal-title text-danger w-100 " id="exampleModalLabel">Exclusão </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body ">
+                                   <h6> Deseja Realizar a Exclusão do - <h4><strong class= 'text-info'>"{{ transacao.description}}" ?</strong></h4>  </h6>
+                                  </div>
+                                  <div class="modal-footer d-flex justify-content-center">
+                                    <form method="post" action="{{ transacao.get_delete_url }}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-secondary btn-sm ">Excluir </button>
+                                    </form>
+                                    <button type="button" class="btn btn-secondary btn-sm ml-3 " data-dismiss="modal">Cancelar</button>
+                                </div>
+                                
+                                </div>
+                              </div>
+                            </div>
                       </td>
                 </tr>
                 {% endif %}
@@ -163,5 +186,6 @@
 
   </div>
 </div>
+
 
 {% endblock %}
