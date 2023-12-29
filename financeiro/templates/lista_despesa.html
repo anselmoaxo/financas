@@ -3,30 +3,31 @@
 
  
  {% block content  %}
- <div class="row">
-    <div class="col-md-10 mx-auto ">
-        <h2 class="text-dark text-center bg-light shadow-lg p-2 mb-2 ">Transações Financeiras- Despesas</h2>
+ <div class="row p-5">
+    <div class="col-md-10 mx-auto p-2 ">
+        <h1 class="text-dark text-center p-2 border-bottom">Transações Financeiras- Despesas</h1>
         <form>
-          <div class="input-group mt-2">
-            <input type="text" name='pesquisa_name' class="form-control" placeholder="Despesas ">
+          <div class="input-group mt-2 p-2">
+            <input type="text" name='pesquisa_name' class="form-control" placeholder="Pesquisar por despesas ... ">
             <div class="input-group-append mr-2">
               <button class="btn btn-success btn" type="submit">Pesquisar Despesas</button>
             </div>
           </div>
           </form>
 
-          <div class="d-grid gap-3 p-1 d-md-flex justify-content-md-start ">
+          <div class="d-grid gap-3 p-2 d-md-flex justify-content-md-start ">
             <a href="{% url "financeiro:cadastro" %}">
-            <button class="btn btn-primary btn-sm" type="button">Adicionar Despesas</button>
+            <button class="btn btn-outline-primary btn-sm" type="button">Adicionar Nova Despesas</button>
             </a>
           </div>
       
 
       
 
-        <div class="table-responsive-sm shadow-lg p-2 mb-5  ">
+          <h2 class="text-center">Listas Despesas</h2>
+          <div class="table-responsive bg-ligth  shadow-lg p-2 mb-5 ">
   
-            <table class="table table-sm table-striped table-primary">
+            <table class="table table-sm table-hover table-bordered border border-5">
               <thead>
               <tr>
                 <th scope="col">Descrição</th>
@@ -40,21 +41,41 @@
             
     <tbody>
         {% for l in lista %}
-        <tr class="bg-Secondary">
+        <tr class="table-danger">
                 <td>{{ l.description }}</td>
                 <td>{{ l.category }}</td>
                 <td>{{ l.amount }}</td>
                 <td>{{ l.transaction_date }}</td>
                 <td>{{ l.transaction_type}}</td>
-                <td><div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      Opções
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url "financeiro:update_transacao" l.pk %}">Editar</a></li>
-                      <li><a class="dropdown-item" href="{% url "financeiro:excluir_transacao" l.pk %}">Excluir</a></li>
-                    </ul>
-                  </div>
+                  <td>
+                    <a href="{% url "financeiro:update_transacao" l.pk %}">
+                   <button type="button" class="btn btn-sm btn-outline-primary">Editar</button></a>   
+                   
+                   <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal{{ l.pk }}" >Excluir</button> 
+                   <!-- Modal -->
+                       <div class=" shadow-lg p-3 mb-5  rounded modal fade" id="modal{{ l.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                         <div class="modal-dialog " role="document">
+                           <div class="modal-content ">
+                             <div class="modal-header text-center align-items-center p-1 ">
+                               <h4 class="modal-title text-danger w-100 " id="exampleModalLabel">Exclusão </h4>
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                               </button>
+                             </div>
+                             <div class="modal-body ">
+                              <h6 class='text-center'> Deseja Realizar a Exclusão do - <strong class= 'text-danger'>"{{ l.description}}" ?</strong></h6>  
+                             </div>
+                             <div class="modal-footer d-flex justify-content-center">
+                               <form method="post" action="{{ l.get_delete_url }}">
+                                   {% csrf_token %}
+                                   <button type="submit" class="btn btn-danger btn-sm ">Excluir </button>
+                               </form>
+                               <button type="button" class="btn btn-secondary btn-sm ml-3 " data-dismiss="modal">Fechar</button>
+                           </div>
+                           
+                           </div>
+                         </div>
+                       </div>
                 </td>
               </tr>
         {% empty%}

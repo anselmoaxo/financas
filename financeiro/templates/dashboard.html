@@ -79,7 +79,7 @@
 
         <h2 class="text-center">Receitas</h2>
         <div class="table-responsive bg-ligth  shadow-lg p-2 mb-5 ">
-        <table class='table table-sm table-hover table-bordered border-info'>
+        <table class='table table-sm table-hover table-bordered border border-5'>
             <thead class="success">
                 <tr >
                     <th scope="col">Descrição</th>
@@ -87,15 +87,15 @@
                     <th scope="col">Valor</th>
                     <th scope="col">Data Recebimento</th>
                     <th scope="col">Tipo Transação</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
+                    <th scope="col">Opções</th>
+                   
                 </tr>
             </thead>
             <tbody>
                 {% for transacao in object_list %}
                 {% if transacao.transaction_type == 'Receita' %}
 
-                  <tr >
+                  <tr  class="table-success" >
                     <td>{{ transacao.description }}</td>
                     <td>{{ transacao.category }}</td>
                     <td>{{ transacao.amount }}</td>
@@ -103,12 +103,33 @@
                     <td>{{ transacao.transaction_type }}</td>
                     <td>
                       <a href="{% url "financeiro:update_transacao" transacao.pk %}">
-                     <button type="button" class="btn btn-sm btn-primary">Editar</button></a> </td>
-                     <td>
-                     <form method="post" action="{{ transacao.get_delete_url }}">
-                      {% csrf_token %}
-                      <button type="submit" class="btn btn-danger btn-sm ">Excluir</button>
-                  </form>
+                     <button type="button" class="btn btn-sm btn-outline-primary">Editar</button></a>   
+                     
+                     <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal{{ transacao.pk }}" >Excluir</button> 
+                     <!-- Modal -->
+                         <div class=" shadow-lg p-3 mb-5  rounded modal fade" id="modal{{ transacao.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                           <div class="modal-dialog " role="document">
+                             <div class="modal-content ">
+                               <div class="modal-header text-center align-items-center p-1 ">
+                                 <h4 class="modal-title text-danger w-100 " id="exampleModalLabel">Exclusão </h4>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                 </button>
+                               </div>
+                               <div class="modal-body ">
+                                <h6 class='text-center'> Deseja Realizar a Exclusão do - <strong class= 'text-danger'>"{{ transacao.description}}" ?</strong></h6>  
+                               </div>
+                               <div class="modal-footer d-flex justify-content-center">
+                                 <form method="post" action="{{ transacao.get_delete_url }}">
+                                     {% csrf_token %}
+                                     <button type="submit" class="btn btn-danger btn-sm ">Excluir </button>
+                                 </form>
+                                 <button type="button" class="btn btn-secondary btn-sm ml-3 " data-dismiss="modal">Fechar</button>
+                             </div>
+                             
+                             </div>
+                           </div>
+                         </div>
                       </td>
                 </tr>
                 {% endif %}
@@ -125,7 +146,7 @@
        
         <h2 class="text-center">Despesas</h2>
         <div class="table-responsive shadow-lg p-1 mb-5">
-        <table class='table table-sm table-hover table-bordered border-info'>
+        <table class='table table-sm table-hover table-bordered border border-5'>
             <thead >
                 <tr>
                     <th scope="col">Descrição</th>
@@ -140,7 +161,7 @@
             <tbody>
                 {% for transacao in object_list %}
                 {% if transacao.transaction_type == 'Despesas' %}
-                <tr>
+                <tr  class="table-danger">
                     <td>{{ transacao.description }}</td>
                     <td>{{ transacao.category }}</td>
                     <td>{{ transacao.amount }}</td>
@@ -148,10 +169,10 @@
                     <td>{{ transacao.transaction_type }}</td>
                     <td>
                       <a href="{% url "financeiro:update_transacao" transacao.pk %}">
-                     <button type="button" class="btn btn-sm btn-primary">Editar</button></a> 
+                     <button type="button" class="btn btn-sm btn-outline-primary">Editar</button></a> 
                   
                       
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal{{ transacao.pk }}" >Excluir</button> 
+                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal{{ transacao.pk }}" >Excluir</button> 
                         <!-- Modal -->
                             <div class=" shadow-lg p-3 mb-5  rounded modal fade" id="modal{{ transacao.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                               <div class="modal-dialog " role="document">
@@ -163,14 +184,14 @@
                                     </button>
                                   </div>
                                   <div class="modal-body ">
-                                   <h6> Deseja Realizar a Exclusão do - <h4><strong class= 'text-info'>"{{ transacao.description}}" ?</strong></h4>  </h6>
+                                   <h6 class='text-center'> Deseja Realizar a Exclusão do - <strong class= 'text-danger'>"{{ transacao.description}}" ?</strong></h6>  
                                   </div>
                                   <div class="modal-footer d-flex justify-content-center">
                                     <form method="post" action="{{ transacao.get_delete_url }}">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-secondary btn-sm ">Excluir </button>
+                                        <button type="submit" class="btn btn-danger btn-sm ">Excluir </button>
                                     </form>
-                                    <button type="button" class="btn btn-secondary btn-sm ml-3 " data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-secondary btn-sm ml-3 " data-dismiss="modal">Fechar</button>
                                 </div>
                                 
                                 </div>

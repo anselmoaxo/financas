@@ -21,14 +21,15 @@
             </li>
         
             <li>
-                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                <a href="{% url "financeiro:lista_transacao" %}" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Transações</span> </a>
-                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                    <li class="w-100">
-                        <a href="{% url "financeiro:lista_despesa" %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Acessar Despesas</span> </a>
+                   
                     </li>
                     <li>
-                        <a href="{% url "financeiro:lista_receita" %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Acessar Receitas</span> </a>
+                        <a href="{% url "financeiro:lista_despesa" %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Lista de Despesas</span> </a>
+                    </li>
+                    <li>
+                        <a href="{% url "financeiro:lista_receita" %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Lista de Receitas</span> </a>
                     </li>
                     
                 </ul>
@@ -38,7 +39,7 @@
         {% if request.user.is_authenticated %}
         <div class="dropdown pb-4">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{% static "img/anselmo.jpg" %}" alt="Foto de Perfil" width="30" height="30" class="rounded-circle" alt="Perfil de Usuário">
+                <img src="" alt="Foto de Perfil" width="30" height="30" class="rounded-circle" alt="Perfil de Usuário">
                 <span class="d-none d-sm-inline mx-1">Olá, {{ request.user.first_name }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
