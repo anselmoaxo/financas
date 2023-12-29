@@ -24,18 +24,15 @@
                 <a href="{% url "financeiro:lista_transacao" %}" class="nav-link px-0 align-middle">
                     <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Transações</span> </a>
                    
-                    </li>
+                </li>
                     <li>
                         <a href="{% url "financeiro:lista_despesa" %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Lista de Despesas</span> </a>
                     </li>
                     <li>
-                        <a href="{% url "financeiro:lista_receita" %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Lista de Receitas</span> </a>
+                        <a href="{% url "financeiro:lista_receita" %}" class="nav-link px-0"> <span class="d-none d-sm-inline"> Lista de Receitas</span> </a>
                     </li>
-                    
                 </ul>
-            </li>
-           
-        <hr>
+      
         {% if request.user.is_authenticated %}
         <div class="dropdown pb-4">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

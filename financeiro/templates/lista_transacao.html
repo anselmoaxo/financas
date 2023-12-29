@@ -37,8 +37,9 @@
     <tbody>
         {% for transacao in object_list %}
         {% if transacao.transaction_type == 'Despesas' %}
-        <tr class="table-danger">
-          {% else %}
+          <tr class="table-danger">
+
+        {% else %}
             <tr class="table-success">
         {% endif %}
 
@@ -46,14 +47,18 @@
 
                 <td>{{ transacao.description }}</td>
                 <td>{{ transacao.category }}</td>
-                <td>{{ transacao.amount }}</td>
+                {% if transacao.transaction_type == 'Despesas' %}
+                  <td>R$ {{ transacao.amount }} <i class="bi bi-arrow-down"></i></td>
+                {% else %}
+                  <td>R$ {{ transacao.amount }} <i class="bi bi-arrow-up"></i></td>
+                {% endif %}
                 <td>{{ transacao.transaction_date }}</td>
                 <td>{{ transacao.transaction_type}}</td>
                 <td>
                   <a href="{% url "financeiro:update_transacao" transacao.pk %}">
-                 <button type="button" class="btn btn-sm btn-outline-primary">Editar</button></a>   
+                 <button type="button" class="btn btn-sm btn-outline-primary">Editar <i class="bi bi-pencil"></i></button></a>   
                  
-                 <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal{{ transacao.pk }}" >Excluir</button> 
+                 <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal{{ transacao.pk }}" >Excluir <i class="bi bi-trash3"></i></button> 
                  <!-- Modal -->
                      <div class=" shadow-lg p-3 mb-5  rounded modal fade" id="modal{{ transacao.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                        <div class="modal-dialog " role="document">

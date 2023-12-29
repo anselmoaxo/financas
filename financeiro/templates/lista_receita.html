@@ -44,14 +44,14 @@
         <tr class="table-success">
                 <td>{{ l.description }}</td>
                 <td>{{ l.category }}</td>
-                <td>{{ l.amount }}</td>
+                <td>R$ {{ l.amount }} <i class="bi bi-arrow-up"> </td>
                 <td>{{ l.transaction_date }}</td>
                 <td>{{ l.transaction_type}}</td>
                   <td>
                     <a href="{% url "financeiro:update_transacao" l.pk %}">
-                   <button type="button" class="btn btn-sm btn-outline-primary">Editar</button></a>   
+                   <button type="button" class="btn btn-sm btn-outline-primary">Editar <i class="bi bi-pencil"></i></button></a>   
                    
-                   <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal{{ l.pk }}" >Excluir</button> 
+                   <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal{{ l.pk }}" >Excluir <i class="bi bi-trash3"></i></button> 
                    <!-- Modal -->
                        <div class=" shadow-lg p-3 mb-5  rounded modal fade" id="modal{{ l.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                          <div class="modal-dialog " role="document">

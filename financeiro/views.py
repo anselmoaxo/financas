@@ -7,18 +7,15 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from django.conf import settings
-import os
+from .forms import TransactionForm
 from .models import Transaction, Category
 from django.urls import reverse_lazy
-import matplotlib.pyplot as plt
-import matplotlib
 from django.db.models import Sum
 from financeiro.context_processors import soma_transacao
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 
-matplotlib.use("Agg")
+
 
 
 class Homepage(TemplateView):
@@ -27,8 +24,7 @@ class Homepage(TemplateView):
 
 class CadastroTransacao(LoginRequiredMixin, CreateView):
     template_name = "cadastro.html"
-    model = Transaction
-    fields = "__all__"
+    form_class = TransactionForm
     success_url = reverse_lazy("financeiro:lista_transacao")
 
 
@@ -41,7 +37,7 @@ class UpdateTransacao(LoginRequiredMixin, UpdateView):
     template_name = "cadastro.html"
     model = Transaction
     fields = "__all__"
-    success_url = reverse_lazy("financeiro:lista_transacao")
+    success_url = reverse_lazy('financeiro:dashboard')
 
 
 class DeleteTransacao(DeleteView):
