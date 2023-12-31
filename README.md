@@ -35,14 +35,12 @@ O sistema está em desenvolvimento ativo. Sua contribuição é bem-vinda. Sinta
 Pré-requisitos
 Listar qualquer software ou configuração necessária antes de instalar e usar o sistema.
 Instalação
-Clone o repositório: git clone https://github.com/seu-usuario/seu-repositorio.git
-Instale as dependências: npm install ou yarn install
-Inicie a aplicação: npm start ou yarn start
+Clone o repositório: git clone (https://github.com/anselmoaxo/financas.git)
+
 Contribuição
 Sua contribuição é bem-vinda! Por favor, siga as diretrizes de contribuição antes de enviar um pull request.
 
 Contato
-Para qualquer dúvida ou suporte, entre em contato conosco em seu-email@example.com.
+Para qualquer dúvida ou suporte, entre em contato conosco em anselmo.cstecnologia@gmail.com
 
-Licença
-Este projeto é licenciado sob a Licença XYZ.
+
